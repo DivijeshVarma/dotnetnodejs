@@ -56,8 +56,8 @@ pipeline {
 		echo 'Access Application http://172.28.8.53:5050'
             }
         }
-        
-
+    }     
+   
     // Defines actions to perform after the pipeline finishes, regardless of success or failure.
     post {
         // Always runs this block.
