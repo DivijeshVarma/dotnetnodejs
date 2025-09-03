@@ -51,7 +51,7 @@ pipeline {
             steps {
                 echo 'Starting applications...'
                 // Use 'start /b' for Windows to run processes in the background.
-                bat 'start /b node backend-node/index.js'
+                bat 'start /b node backend/index.js'
                 bat 'start /b dotnet run --project frontend-dotnet\\frontend-dotnet.csproj'
             }
         }
