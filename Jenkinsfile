@@ -4,6 +4,9 @@ pipeline {
         // Specify the label of the Windows slave node.
         label 'windows-node1' 
     }
+    tools {
+        nodejs 'Node-20' // Use the name you configured in Jenkins
+    }
     
     // Defines environment variables for convenience.
     environment {
