@@ -2,7 +2,7 @@ pipeline {
     // Defines the agent where the pipeline will run. 'any' means any available agent.
     agent {
         // Specify the label of the Windows slave node.
-        label 'windows-slave' 
+        label 'windows-node1' 
     }
     
     // Defines environment variables for convenience.
