@@ -11,7 +11,7 @@ pipeline {
     // Defines environment variables for convenience.
     environment {
         // Path to the Node.js backend directory.
-        BACKEND_DIR = "backend-node" 
+        BACKEND_DIR = "backend" 
         // Path to the .NET frontend directory.
         FRONTEND_DIR = "frontend-dotnet"
     }
