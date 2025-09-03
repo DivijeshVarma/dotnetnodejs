@@ -11,7 +11,7 @@ pipeline {
         stage('Install Node Backend') {
             steps {
                 dir('backend') {
-                    sh 'npm install'
+                    bat 'npm install'
                 }
             }
         }
@@ -19,7 +19,7 @@ pipeline {
         stage('Run Node Backend') {
             steps {
                 dir('backend') {
-                    sh 'nohup npm start &'
+                    bat 'start /B npm start'
                 }
             }
         }
@@ -27,8 +27,8 @@ pipeline {
         stage('Build .NET Frontend') {
             steps {
                 dir('frontend-dotnet') {
-                    sh 'dotnet restore'
-                    sh 'dotnet build --configuration Release'
+                    bat 'dotnet restore'
+                    bat 'dotnet build --configuration Release'
                 }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
         stage('Run .NET Frontend') {
             steps {
                 dir('frontend-dotnet') {
-                    sh 'nohup dotnet run &'
+                    bat 'start /B dotnet run'
                 }
             }
         }
