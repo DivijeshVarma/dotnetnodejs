@@ -11,7 +11,9 @@ pipeline {
         stage('Install Node Backend') {
             steps {
                 dir('backend') {
-                    bat 'npm install'
+		   withNodeJS('NodeJS') {
+                       bat 'npm install'
+		   } 
                 }
             }
         }
@@ -19,7 +21,9 @@ pipeline {
         stage('Run Node Backend') {
             steps {
                 dir('backend') {
-                    bat 'start /B npm start'
+                   withNodeJS('NodeJS') {
+                       bat 'start /B npm start'
+		   } 
                 }
             }
         }
