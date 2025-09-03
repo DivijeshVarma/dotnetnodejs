@@ -1,0 +1,118 @@
+##################################
+# Node.js
+##################################
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Environment files
+.env
+.env.test
+.env.*.local
+
+# Coverage directory
+coverage/
+
+# Next.js / Nuxt / other build artifacts
+.next/
+.nuxt/
+out/
+
+# Dist build
+dist/
+build/
+
+##################################
+# .NET
+##################################
+
+# Build results
+bin/
+obj/
+out/
+[Ll]og/
+TestResults/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NuGet
+*.nupkg
+.nuget/
+packages/
+*.snupkg
+
+# Project lock files
+project.lock.json
+project.fragment.lock.json
+
+# Visual Studio Code
+.vscode/
+
+# Visual Studio settings
+.vs/
+
+# DotCover
+.idea/
+*.dotCover
+
+# Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.userprefs
+
+# Other
+*.dbmdl
+*.bak
+*.orig
+*.tmp
+*.cache
+
+# Local secrets
+secrets.json
+
+# Environment-specific files
+appsettings.Development.json
+appsettings.*.json
+
+##################################
+# Optional - OS files
+##################################
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
