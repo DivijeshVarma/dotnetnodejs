@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'NodeJS'  // Name of NodeJS installation configured in Jenkins Global Tool Config
+    }
+
     stages {
         stage('Clone Repository') {
             steps {
@@ -42,4 +46,3 @@ pipeline {
         }
     }
 }
-
