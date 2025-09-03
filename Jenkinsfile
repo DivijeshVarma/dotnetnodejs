@@ -53,20 +53,10 @@ pipeline {
                 // Use 'start /b' for Windows to run processes in the background.
                 bat 'start /b node backend/index.js'
                 bat 'start /b dotnet run --project frontend-dotnet\\frontend-dotnet.csproj'
+		echo 'Access Application http://172.28.8.53:5050'
             }
         }
         
-        // Stage for cleanup or post-build actions.
-        stage('Cleanup') {
-            steps {
-                echo 'Killing all background processes...'
-                // Killing processes on Windows is more complex and depends on the specific process name.
-                // This is a simple example for a known process name.
-                bat 'taskkill /F /IM node.exe'
-                bat 'taskkill /F /IM dotnet.exe'
-            }
-        }
-    }
 
     // Defines actions to perform after the pipeline finishes, regardless of success or failure.
     post {
