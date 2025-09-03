@@ -8,6 +8,20 @@ pipeline {
             }
         }
 
+        // Add this stage to run git whatchanged with the required flag
+        stage('Git Whatchanged Check') {
+            steps {
+                // Run only on Windows agent (adjust label if necessary)
+                script {
+                    if (env.NODE_LABELS?.contains('windows')) {
+                        bat 'git whatchanged --no-abbrev -M --i-still-use-this'
+                    } else {
+                        echo "Skipping git whatchanged, not a Windows node."
+                    }
+                }
+            }
+        }
+
         stage('Install Node Backend') {
             steps {
                 dir('backend') {
