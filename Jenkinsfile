@@ -10,10 +10,11 @@ pipeline {
     
     // Defines environment variables for convenience.
     environment {
+        APP_ROOT = 'simple-app'
         // Path to the Node.js backend directory.
-        BACKEND_DIR = 'backend-node'
+        BACKEND_DIR = "${APP_ROOT}/backend-node" 
         // Path to the .NET frontend directory.
-        FRONTEND_DIR = 'frontend-dotnet'
+        FRONTEND_DIR = "${APP_ROOT}/frontend-dotnet"
     }
 
     // Defines the stages of the pipeline.
