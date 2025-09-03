@@ -6,6 +6,7 @@ pipeline {
     }
     tools {
         nodejs 'Node-20' // Use the name you configured in Jenkins
+	dotnet 'dotnet-sdk'
     }
     
     // Defines environment variables for convenience.
