@@ -62,12 +62,12 @@ pipeline {
 
 		// Change to the backend directory and run the command.
                 dir(env.BACKEND_DIR) {
-                    bat 'node index.js'
+                    bat 'START /B node index.js'
                 }
 
                 // Change to the frontend directory and run the command with the URL.
                 dir(env.FRONTEND_DIR) {
-                    bat 'dotnet run --urls=http://0.0.0.0:5050'
+                    bat 'START /B dotnet run --urls=http://0.0.0.0:5050'
                 }
 
                 echo 'Waiting for applications to start...'
