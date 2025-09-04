@@ -66,15 +66,9 @@ pipeline {
                 }
 
                 // Change to the frontend directory and run the command with the URL.
-                dir(env.FRONTEND_DIR) {
-                    bat 'dotnet run --urls=http://0.0.0.0:5050'
-                }
-
-                echo 'Waiting for applications to start...'
-                // Wait for a few seconds to ensure services are up and running
-                timeout(time: 60, unit: 'SECONDS') {
-                    // This is a placeholder for a more robust readiness check
-                    echo 'Waiting...'
+                timeout(time: 60, unit: 'SECONDS')
+		    dir(env.FRONTEND_DIR) {
+                        bat 'dotnet run --urls=http://0.0.0.0:5050'
                 }
 
 		echo 'Applications started. Access them via the following URLs:'
