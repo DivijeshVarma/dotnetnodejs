@@ -55,7 +55,38 @@ pipeline {
             }
         }
         
+        // This stage is for demonstration; a real scenario would likely use Docker or a more robust deployment strategy.
+        stage('Run Applications') {
+            steps {
+                echo 'Starting applications...'
 
+		// Change to the backend directory and run the command.
+                dir(env.BACKEND_DIR) {
+                    bat 'START /B node index.js'
+                }
+
+                // Change to the frontend directory and run the command with the URL.
+                timeout(time: 60, unit: 'SECONDS')
+		    dir(env.FRONTEND_DIR) {
+                        bat 'dotnet run --urls=http://0.0.0.0:5050'
+                }
+
+		echo 'Applications started. Access them via the following URLs:'
+                echo 'Node.js Backend: http://172.28.8.53:3000'
+                echo '.NET Frontend: http://172.28.8.53:5050'
+            }
+        }
+
+	stage('Verify Application is Accessible') {
+            steps {
+                echo "Testing frontend at ${env.FRONTEND_URL}"
+                // Use PowerShell's Invoke-WebRequest to check the URL
+                bat "powershell.exe -Command \"Invoke-WebRequest -Uri ${env.FRONTEND_URL}\""
+                echo 'Frontend application is accessible.'
+            }
+        }
+    }     
+   
     // Defines actions to perform after the pipeline finishes, regardless of success or failure.
     post {
         // Always runs this block.
