@@ -50,10 +50,20 @@ pipeline {
         stage('Run Applications') {
             steps {
                 echo 'Starting applications...'
-                // Use 'start /b' for Windows to run processes in the background.
-                bat 'start /b node backend/index.js'
-                bat 'start /b dotnet run --project frontend-dotnet\\frontend-dotnet.csproj'
-		echo 'Access Application http://172.28.8.53:5050'
+
+		// Change to the backend directory and run the command.
+                dir(env.BACKEND_DIR) {
+                    bat 'start /b node index.js'
+                }
+
+                // Change to the frontend directory and run the command with the URL.
+                dir(env.FRONTEND_DIR) {
+                    bat 'start /b dotnet run --urls=http://0.0.0.0:5050'
+                }
+
+		echo 'Applications started. Access them via the following URLs:'
+                echo 'Node.js Backend: http://172.28.8.53:3000'
+                echo '.NET Frontend: http://172.28.8.53:5050'
             }
         }
     }     
