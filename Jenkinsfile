@@ -15,6 +15,7 @@ pipeline {
         BACKEND_DIR = "backend" 
         // Path to the .NET frontend directory.
         FRONTEND_DIR = "frontend-dotnet"
+	FRONTEND_URL = 'http://172.28.8.53:5050'
     }
 
     // Defines the stages of the pipeline.
@@ -61,9 +62,25 @@ pipeline {
                     bat 'start /b dotnet run --urls=http://0.0.0.0:5050'
                 }
 
+                echo 'Waiting for applications to start...'
+                // Wait for a few seconds to ensure services are up and running
+                timeout(time: 30, unit: 'SECONDS') {
+                    // This is a placeholder for a more robust readiness check
+                    echo 'Waiting...'
+                }
+
 		echo 'Applications started. Access them via the following URLs:'
                 echo 'Node.js Backend: http://172.28.8.53:3000'
                 echo '.NET Frontend: http://172.28.8.53:5050'
+            }
+        }
+
+	stage('Verify Application is Accessible') {
+            steps {
+                echo "Testing frontend at ${env.FRONTEND_URL}"
+                // Use PowerShell's Invoke-WebRequest to check the URL
+                bat "powershell.exe -Command \"Invoke-WebRequest -Uri ${env.FRONTEND_URL}\""
+                echo 'Frontend application is accessible.'
             }
         }
     }     
