@@ -67,7 +67,7 @@ pipeline {
 
                 // Change to the frontend directory and run the command with the URL.
                 dir(env.FRONTEND_DIR) {
-                    bat 'START /B dotnet run --urls=http://0.0.0.0:5050'
+                    bat 'dotnet run --urls=http://0.0.0.0:5050'
                 }
 
                 echo 'Waiting for applications to start...'
