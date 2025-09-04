@@ -20,6 +20,14 @@ pipeline {
 
     // Defines the stages of the pipeline.
     stages {
+        // New stage to clean up processes from previous runs
+        stage('Pre-Build Cleanup') {
+            steps {
+                echo 'Cleaning up any running processes from a previous build...'
+                bat 'taskkill /F /IM dotnet.exe || exit 0'
+                bat 'taskkill /F /IM node.exe || exit 0'
+            }
+        }
         // Stage for building the Node.js backend.
         stage('Build Node.js Backend') {
             steps {
