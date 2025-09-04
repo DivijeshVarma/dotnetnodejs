@@ -62,17 +62,17 @@ pipeline {
 
 		// Change to the backend directory and run the command.
                 dir(env.BACKEND_DIR) {
-                    bat 'start /b node index.js'
+                    bat 'node index.js'
                 }
 
                 // Change to the frontend directory and run the command with the URL.
                 dir(env.FRONTEND_DIR) {
-                    bat 'start /b dotnet run --urls=http://0.0.0.0:5050'
+                    bat 'dotnet run --urls=http://0.0.0.0:5050'
                 }
 
                 echo 'Waiting for applications to start...'
                 // Wait for a few seconds to ensure services are up and running
-                timeout(time: 30, unit: 'SECONDS') {
+                timeout(time: 60, unit: 'SECONDS') {
                     // This is a placeholder for a more robust readiness check
                     echo 'Waiting...'
                 }
