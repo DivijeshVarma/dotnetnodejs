@@ -55,6 +55,7 @@ pipeline {
             }
         }
         
+   }
 
     // Defines actions to perform after the pipeline finishes, regardless of success or failure.
     post {
