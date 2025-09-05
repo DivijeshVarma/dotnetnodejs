@@ -54,7 +54,7 @@ pipeline {
             steps {
                 dir(env.FRONTEND_DIR) {
                     echo 'Starting .NET frontend in background on 0.0.0.0:5050...'
-                    bat 'start /B cmd /c "dotnet run --urls=http://0.0.0.0:5050 > frontend.log 2>&1"'
+                    bat 'dotnet run'
                 }
             }
         }
