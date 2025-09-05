@@ -35,7 +35,7 @@ pipeline {
             steps {
                 dir(env.BACKEND_DIR) {
                     echo 'Starting Node.js backend in background...'
-                    bat 'start /B cmd /c "node index.js > backend.log 2>&1"'
+                    bat 'node index.js'
                 }
             }
         }
