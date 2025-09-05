@@ -10,6 +10,6 @@ app.get('/api/message', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Node.js backend running on http://localhost:${PORT}`);
+  console.log(`Node.js backend running on http://0.0.0.0:${PORT}`);
 });
 

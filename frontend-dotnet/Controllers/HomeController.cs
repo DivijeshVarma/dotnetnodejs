@@ -23,7 +23,7 @@ public class HomeController : Controller
         string message = "No response";
         try
         {
-            var response = await _httpClient.GetAsync("http://localhost:3000/api/message");
+            var response = await _httpClient.GetAsync("http://192.168.91.36:3000/api/message");
             response.EnsureSuccessStatusCode();
 
             var jsonString = await response.Content.ReadAsStringAsync();
