@@ -26,6 +26,7 @@ pipeline {
             steps {
                 dir(env.BACKEND_DIR) {
                     bat 'npm install'
+		    bat 'npm install pm2 -g'
                     echo 'Node.js dependencies installed.'
                 }
             }
@@ -35,7 +36,7 @@ pipeline {
             steps {
                 dir(env.BACKEND_DIR) {
                     echo 'Starting Node.js backend in background...'
-                    bat 'node index.js'
+                    bat 'pm2 start index.js --watch'
                 }
             }
         }
@@ -45,6 +46,7 @@ pipeline {
                 dir(env.FRONTEND_DIR) {
                     bat 'dotnet restore'
                     bat 'dotnet build --no-restore'
+		    bat 'dotnet tool install --global DotnetBackground'
                     echo '.NET frontend built successfully.'
                 }
             }
@@ -54,7 +56,7 @@ pipeline {
             steps {
                 dir(env.FRONTEND_DIR) {
                     echo 'Starting .NET frontend in background on 0.0.0.0:5050...'
-                    bat 'dotnet run'
+                    bat 'DotnetBackground run'
                 }
             }
         }
