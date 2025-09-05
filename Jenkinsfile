@@ -11,6 +11,7 @@ pipeline {
         BACKEND_DIR = "backend"
         FRONTEND_DIR = "frontend-dotnet"
         FRONTEND_URL = 'http://172.28.8.53:5050' // Replace with your Windows slave IP
+	DOTNET_BACKGROUND = "%USERPROFILE%\\.dotnet\\tools\\DotnetBackground.exe"
     }
 
     stages {
@@ -56,7 +57,7 @@ pipeline {
             steps {
                 dir(env.FRONTEND_DIR) {
                     echo 'Starting .NET frontend in background on 0.0.0.0:5050...'
-                    bat 'DotnetBackground run'
+		    bat "\"${env.DOTNET_BACKGROUND}\" run"
                 }
             }
         }
