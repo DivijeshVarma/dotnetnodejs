@@ -37,10 +37,10 @@ pipeline {
             steps {
                 dir(env.BACKEND_DIR) {
                     echo 'Starting Node.js backend in background...'
-                    //bat 'pm2 start index.js --watch'
-		    bat 'pm2 start index.js --name backend-app --watch --time'
-                    bat 'pm2 list'
-                    bat 'pm2 logs backend-app --lines 20'
+                    bat 'pm2 start index.js --watch --no-daemon'
+		    //bat 'pm2 start index.js --name backend-app --watch --time'
+                    //bat 'pm2 list'
+                    //bat 'pm2 logs backend-app --lines 20'
                 }
             }
         }
@@ -68,7 +68,7 @@ pipeline {
         stage('Display URLs') {
             steps {
                 echo "Frontend URL: ${env.FRONTEND_URL}"
-                echo "Backend API: http://${env.FRONTEND_URL.replace('5050', '3000')}/api/message"
+                echo "Backend API: ${env.FRONTEND_URL.replace('5050', '3000')}/api/message"
             }
         }
     }
