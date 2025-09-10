@@ -36,8 +36,8 @@ pipeline {
         stage('Start Node.js Backend') {
             steps {
                 dir(env.BACKEND_DIR) {
-                    echo 'Starting Node.js backend in background...'
-		    bat 'start "" /b node index.js'
+		    echo 'Starting Node.js backend via PM2...'
+                    bat 'pm2 start index.js --name backend-app || pm2 restart backend-app'
                 }
             }
         }
