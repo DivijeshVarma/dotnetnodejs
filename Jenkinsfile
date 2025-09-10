@@ -37,10 +37,7 @@ pipeline {
             steps {
                 dir(env.BACKEND_DIR) {
                     echo 'Starting Node.js backend in background...'
-                    bat 'pm2 start index.js --watch'
-		    //bat 'pm2 start index.js --name backend-app --watch --time'
-                    //bat 'pm2 list'
-                    //bat 'pm2 logs backend-app --lines 20'
+		    bat 'start "" /b node index.js'
                 }
             }
         }
